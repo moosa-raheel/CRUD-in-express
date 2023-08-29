@@ -1,0 +1,57 @@
+<%- include('partials/boilerCode') %> <%- include('partials/navbar') %>
+<div class="container">
+  <div class="from">
+    <h2 class="create">Update Employe</h2>
+    <form method="post">
+      <div class="lab-inp">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter name"
+          required
+          value="<%= data.name %>"
+        />
+        <label for="age">Age</label>
+        <input
+          type="number"
+          name="age"
+          id="age"
+          placeholder="Enter age"
+          required
+          value="<%= data.age %>"
+        />
+        <label for="phone">Phone Number</label>
+        <input
+          type="number"
+          name="phone"
+          id="phone"
+          placeholder="Enter phone number"
+          required
+          value="<%= data.phone %>"
+        />
+        <label for="salary">Salary</label>
+        <input
+          type="number"
+          name="salary"
+          id="salary"
+          placeholder="Enter salary"
+          required
+          value="<%= data.salary %>"
+        />
+      </div>
+      <div class="buttons">
+        <button type="submit" class="create">Update Employe</button>
+        <button type="reset" class="cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  const cancelBtn = document.querySelector("button.cancel");
+  cancelBtn.addEventListener("click", () => {
+    location.href = "/";
+  });
+</script>
+<%- include('partials/boilerCodeEnd') %>

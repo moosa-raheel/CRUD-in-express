@@ -1,0 +1,91 @@
+<%- include('./partials/boilerCode') %> <%- include('./partials/navbar') %>
+<div class="container">
+  <div id="main">
+    <div class="from">
+      <h2 class="create">Create Employe</h2>
+      <form method="post">
+        <div class="lab-inp">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter name"
+            required
+          />
+          <label for="age">Age</label>
+          <input
+            type="number"
+            name="age"
+            id="age"
+            placeholder="Enter age"
+            required
+          />
+          <label for="phone">Phone Number</label>
+          <input
+            type="number"
+            name="phone"
+            id="phone"
+            placeholder="Enter phone number"
+            required
+          />
+          <label for="salary">Salary</label>
+          <input
+            type="number"
+            name="salary"
+            id="salary"
+            placeholder="Enter salary"
+            required
+          />
+        </div>
+        <div class="buttons">
+          <button type="submit" class="create">Add Employe</button>
+          <button type="reset" class="cancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="table">
+      <h2 class="read">List Of Employes</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Number</th>
+            <th>Salary</th>
+            <th>Join</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach((item)=>{ %>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= item.age %></td>
+            <td><%= item.phone %></td>
+            <td><%= item.salary %></td>
+            <% const inputDate = new Date(item.join); const day =
+            inputDate.getDate(); const month = inputDate.getMonth() + 1; const
+            year = inputDate.getFullYear(); const date =
+            `${day}-${month}-${year}`%>
+            <td><%= date %></td>
+            <td class="edits">
+              <form method="get" action="/update/<%=item._id%>">
+                <button type="submit">
+                  <i class="fa-solid fa-pen-to-square edit"></i>
+                </button>
+              </form>
+              <form method="post" action="/delete/<%=item._id%>">
+                <button type="submit">
+                  <i class="fa-solid fa-trash delete"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%- include('./partials/boilerCodeEnd') %>
